@@ -29,5 +29,15 @@ jobs:
       - name: Plan Terraform
         run: terraform -chdir=terraform plan
 
+      - name: List files (debug)
+        run: |
+          echo "📂 Listing project files:"
+          ls -R
+
       - name: Apply Terraform
         run: terraform -chdir=terraform apply -auto-approve
+
+      - name: List files (debug)
+        run: |
+          echo "📂 Listing project files:"
+          ls -R
