@@ -26,13 +26,13 @@ jobs:
       - name: Initialize Terraform
         run: terraform -chdir=terraform init
 
-      - name: Plan Terraform
-        run: terraform -chdir=terraform plan
-
       - name: List files (debug)
         run: |
           echo "📂 Listing project files:"
           ls -R
+
+      - name: Plan Terraform
+        run: terraform -chdir=terraform plan
 
       - name: Apply Terraform
         run: terraform -chdir=terraform apply -auto-approve
