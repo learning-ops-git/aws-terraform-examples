@@ -38,8 +38,8 @@ resource "aws_lambda_function" "hello_world" {
   role          = aws_iam_role.lambda_exec.arn
   handler       = "lambda_function.lambda_handler"
   runtime       = "python3.9"
-  filename      = "${path.module}/lambda_function.zip"
-  source_code_hash = filebase64sha256("${path.module}/lambda_function.zip")
+  filename         = data.archive_file.lambda_zip.output_path
+  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
 }
 
 # Package lambda
