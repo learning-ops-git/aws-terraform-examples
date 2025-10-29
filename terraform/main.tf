@@ -12,5 +12,5 @@ module "jobs" {
   job_parameters             = each.value.job_parameters
   script_path                = each.value.script_path
   bucket_deployment          = each.value.bucket_deployment
-  role_name                  = each.value.role_name
+  role_name                  = each.value.role_arn
 }
