@@ -24,10 +24,10 @@ jobs:
           terraform_version: 1.9.5
 
       - name: Initialize Terraform
-        run: terraform -chdir=terraform init
+        run: terraform -chdir=terraform init -var-file="./dev/terraform-dev.tfvars"
 
       - name: Plan Terraform
-        run: terraform -chdir=terraform plan -var-file="dev/terraform-dev.tfvars"
+        run: terraform -chdir=terraform plan -var-file="./dev/terraform-dev.tfvars"
 
       - name: Apply Terraform
-        run: terraform -chdir=terraform apply -auto-approve -var-file="dev/terraform-dev.tfvars"
+        run: terraform -chdir=terraform apply -auto-approve -var-file="./dev/terraform-dev.tfvars"
