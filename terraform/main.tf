@@ -3,7 +3,7 @@ module "jobs" {
     aws.main = aws.main
   }
 
-  source                     = "git@github.com:username/repo.git//mod-glue-job?ref=glue"
+  source                     = "./mod-glue-job"
   for_each                   = local.glue_jobs_definition
   country                    = var.country
   env                        = var.env
