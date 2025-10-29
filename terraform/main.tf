@@ -7,9 +7,6 @@ module "jobs" {
   for_each                   = local.glue_jobs_definition
   country                    = var.country
   env                        = var.env
-  capacity                   = var.capacity
-  integrity                  = var.integrity
-  confidentiality            = var.confidentiality
   tags                       = local.glue_job_tags
   job_name                   = each.value.job_name
   job_parameters             = each.value.job_parameters

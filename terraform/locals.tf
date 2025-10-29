@@ -54,7 +54,7 @@ locals {
       job_name                   = props.job_name
       script_path                = "Demo_Job.py"
       bucket_deployment          = "s3://aws-glue-assets-216461881627-us-east-1/scripts/"
-      role_name                  = "arn:aws:iam::216461881627:role/glue-role"
+      role_arn                  = "arn:aws:iam::216461881627:role/glue-role"
     }
   }
 
