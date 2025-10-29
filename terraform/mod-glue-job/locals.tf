@@ -14,7 +14,7 @@ locals {
         "--enable-glue-datacatalog"          = "true"
         "--enable-continuous-cloudwatch-log" = "true"
         "--job-language"                     = "python"
-        "--TempDir"                          = "s3://${var.bucket_deployment}/${var.repository_name}/temporary/${var.job_name}/"
+        "--TempDir"                          = "s3://${var.bucket_deployment}/temporary/${var.job_name}/"
     }
 
     job_arguments = merge(local.argument_auto, var.job_parameters)
