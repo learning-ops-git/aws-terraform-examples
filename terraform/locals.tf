@@ -53,7 +53,7 @@ locals {
       job_parameters             = merge(var.job_parameters, { "--ACCOUNT" = data.aws_caller_identity.current.account_id, "--ENV" : local.mesh_env }, props.extra_job_parameters)
       job_name                   = props.job_name
       script_path                = "scripts"
-      bucket_deployment          = "aws-glue-assets-216461881627-us-east-1/"
+      bucket_deployment          = "aws-glue-assets-216461881627-us-east-1"
       role_arn                  = "arn:aws:iam::216461881627:role/glue-role"
     }
   }
