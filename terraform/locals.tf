@@ -38,7 +38,7 @@ locals {
       for job in props.jobs : {
         functionality        = job
         type_process         = props.type_process
-        job_name             = "${var.country}_delfos_${var.domain}_${var.subdomain}_${props.type_process}_${job}" #co_delfos_productos_srf_curado_eventos_pismo
+        job_name             = "${var.country}_${props.type_process}_${job}"
         extra_job_parameters = can(local.custom_parameters[job]) ? local.custom_parameters[job] : {}
       }
     ]
