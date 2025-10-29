@@ -2,7 +2,7 @@ variable "country" {
     description = "deployment country"
     type = string
     validation {
-        condition = contains(["co"])
+        condition = contains(["co"], var.country)
         error_message = "Invalid country"
     }
     nullable = false
@@ -11,7 +11,7 @@ variable "country" {
 variable "env" {
     description = "AWS env"
     validation {
-        condition = contains(["dev"])
+        condition = contains(["dev"], var.env)
         error_message = "Invalid env"
     }
     nullable = false
