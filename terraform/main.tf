@@ -1,6 +1,6 @@
 module "jobs" {
   providers = {
-    aws = aws.main
+    aws.main = aws.main
   }
 
   source                     = "./mod-glue-job"
