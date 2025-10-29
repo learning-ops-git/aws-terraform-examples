@@ -3,7 +3,7 @@ name: Deploy AWS Lambda with Terraform
 on:
   push:
     branches:
-      - main
+      - glue-job
 
 jobs:
   deploy:
@@ -26,18 +26,8 @@ jobs:
       - name: Initialize Terraform
         run: terraform -chdir=terraform init
 
-      - name: List files (debug)
-        run: |
-          echo "📂 Listing project files:"
-          ls -R
-
       - name: Plan Terraform
-        run: terraform -chdir=terraform plan
+        run: terraform -chdir=terraform plan -var-file="dev/terraform-dev.tfvars"
 
       - name: Apply Terraform
-        run: terraform -chdir=terraform apply -auto-approve
-
-      - name: List files (debug)
-        run: |
-          echo "📂 Listing project files:"
-          ls -R
+        run: terraform -chdir=terraform apply -auto-approve -var-file="dev/terraform-dev.tfvars"
