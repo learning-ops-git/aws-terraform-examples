@@ -3,7 +3,7 @@ terraform {
     organization = "learning-ops-git"
 
     workspaces {
-      name = "s3-module-${var.environment}"
+      name = "s3-module-dev"
     }
   }
 }
