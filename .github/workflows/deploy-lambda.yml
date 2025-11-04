@@ -23,6 +23,11 @@ jobs:
         with:
           terraform_version: 1.10.4
 
+      - name: List files Before Deployment (debug)
+        run: |
+          echo "📂 Listing project files:"
+          ls -R
+
       - name: Initialize Terraform
         run: terraform -chdir=terraform init -var-file=".env/dev/terraform-dev.tfvars"
         env:
