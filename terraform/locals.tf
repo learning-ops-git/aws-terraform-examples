@@ -27,7 +27,7 @@ locals {
         suffix         = bucket 
         tags =  merge(
           var.tags,{
-          storage_type = props_value.storage_type
+          storage_type = property_value.storage_type
           }
         )
       }
