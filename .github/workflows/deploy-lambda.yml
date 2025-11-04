@@ -3,7 +3,7 @@ name: Deploy AWS Lambda with Terraform
 on:
   push:
     branches:
-      - main
+      - s3-storage
 
 jobs:
   deploy:
@@ -24,19 +24,20 @@ jobs:
           terraform_version: 1.9.5
 
       - name: Initialize Terraform
-        run: terraform -chdir=terraform init
-
-      - name: List files (debug)
-        run: |
-          echo "📂 Listing project files:"
-          ls -R
+        run: terraform -chdir=terraform init -var-file="./dev/terraform-dev.tfvars"
+        env:
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
       - name: Plan Terraform
-        run: terraform -chdir=terraform plan
+        run: terraform -chdir=terraform plan -var-file="./dev/terraform-dev.tfvars"
+        env:
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
       - name: Apply Terraform
-        run: terraform -chdir=terraform apply -auto-approve
-
+        run: terraform -chdir=terraform apply -auto-approve -var-file="./dev/terraform-dev.tfvars"
+        env:
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+          
       - name: List files (debug)
         run: |
           echo "📂 Listing project files:"
