@@ -5,5 +5,7 @@ terraform {
     workspaces {
       name = "s3-module-dev"
     }
+
+    execution_mode = "local"
   }
 }
