@@ -24,17 +24,17 @@ jobs:
           terraform_version: 1.10.4
 
       - name: Initialize Terraform
-        run: terraform -chdir=terraform init -var-file="./dev/terraform-dev.tfvars"
+        run: terraform -chdir=terraform init -var-file=".env/dev/terraform-dev.tfvars"
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
       - name: Plan Terraform
-        run: terraform -chdir=terraform plan -var-file="./dev/terraform-dev.tfvars"
+        run: terraform -chdir=terraform plan -var-file=".env/dev/terraform-dev.tfvars"
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
       - name: Apply Terraform
-        run: terraform -chdir=terraform apply -auto-approve -var-file="./dev/terraform-dev.tfvars"
+        run: terraform -chdir=terraform apply -auto-approve -var-file=".env/dev/terraform-dev.tfvars"
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
