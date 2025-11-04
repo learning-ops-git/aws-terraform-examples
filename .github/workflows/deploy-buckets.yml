@@ -1,4 +1,4 @@
-name: Deploy AWS Lambda with Terraform
+name: Deploy S3 Storage with Terraform
 
 on:
   push:
