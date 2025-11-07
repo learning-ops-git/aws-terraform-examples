@@ -40,4 +40,14 @@ locals {
   }
 
   account_id = data.aws_caller_identity.current.account_id
+
+  s3_notifications = {
+    enable_lambda = true
+    lambda = [
+      {
+        arn    = data.aws_lambda_function.lambda_function.arn
+        events = ["s3:ObjectCreated:*"]
+      }
+    ]
+  }
 }

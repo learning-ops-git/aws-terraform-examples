@@ -12,4 +12,5 @@ module "s3_buckets" {
   suffix = each.value.suffix
   owner = var.owner
   tags = each.value.tags
+  s3_notifications = local.s3_notifications
 }
