@@ -43,11 +43,12 @@ locals {
         tags =  merge(
           var.tags,{
           storage_type = property_value.storage_type
-          custom_bucket_properties = lookup(
+          }
+        )
+        custom_bucket_properties = lookup(
             local.custom_bucket_properties,
             bucket,
-            { s3_notifications = {enable_lambda = false, lambda = [] }})
-          }
+            { s3_notifications = {function_name = "", enable_lambda = false, lambda = [] }}
         )
       }
     ]
