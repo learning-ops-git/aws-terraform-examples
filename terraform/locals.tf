@@ -27,6 +27,7 @@ locals {
         enable_lambda = true
         lambda = [
           {
+            function_name = data.aws_lambda_function.lambda_function.function_name
             arn    = data.aws_lambda_function.lambda_function.arn
             events = ["s3:ObjectCreated:*"]
           }
