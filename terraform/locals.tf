@@ -11,6 +11,7 @@ locals {
             "logs",
             "artifacts",
             "athena-results",
+            "airflow-dags",
         ]
     },
     temp_storage = {
