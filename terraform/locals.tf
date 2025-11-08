@@ -20,6 +20,20 @@ locals {
         ]
     }
   }
+  
+  custom_bucket_properties = {
+    "landing" = {
+      s3_notifications = {
+        enable_lambda = true
+        lambda = [
+          {
+            arn    = data.aws_lambda_function.lambda_function.arn
+            events = ["s3:ObjectCreated:*"]
+          }
+           ]
+        }
+      }
+  }
 
   flattened_bucket_definitions = flatten([
     for property_key, property_value in local.bucket_properties : [
@@ -28,6 +42,10 @@ locals {
         tags =  merge(
           var.tags,{
           storage_type = property_value.storage_type
+          custom_bucket_properties = lookup(
+            local.custom_bucket_properties,
+            bucket,
+            { s3_notifications = {enable_lambda = false, lambda = [] }})
           }
         )
       }
@@ -41,13 +59,5 @@ locals {
 
   account_id = data.aws_caller_identity.current.account_id
 
-  s3_notifications = {
-    enable_lambda = true
-    lambda = [
-      {
-        arn    = data.aws_lambda_function.lambda_function.arn
-        events = ["s3:ObjectCreated:*"]
-      }
-    ]
-  }
+
 }
