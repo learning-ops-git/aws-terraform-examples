@@ -1,7 +1,4 @@
 module "lambda_function" {
-  providers = {
-    aws.main = aws.main
-  }
 
   source = "github.com/learning-ops-git/terraform-modules//module/lambda-mod?ref=lambda-mod"
 
