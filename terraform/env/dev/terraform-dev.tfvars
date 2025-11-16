@@ -1,4 +1,2 @@
-country = "co"
-domain = "data-engineering"
-environment = "dev"
-owner = "Daniel-H"
+function_name = "simple_lambda"
+filename      = "../build/lambda.zip"

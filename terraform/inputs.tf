@@ -1,43 +1,64 @@
-variable "country" {
-  description = "The country where the S3 bucket will be created."
+variable "function_name" {
+  description = "Name of the Lambda function"
   type        = string
-  default     = "co"
-  validation {
-    condition     = contains(["co", "us", "cn"], var.country)
-    error_message = "Country code must be one of: co, us, or cn"
-  }
 }
 
-variable "domain" {
-  description = "The domain associated with the S3 bucket."
+variable "filename" {
+  description = "Path to the deployment package (.zip file)"
   type        = string
-  validation {
-    condition     = length(var.domain) > 0
-    error_message = "Domain cannot be an empty string"
-  }
 }
 
-variable "environment" {
-  description = "The environment for the S3 bucket."
+variable "handler" {
+  description = "Function entrypoint in the code"
   type        = string
-  default     = "dev"
-  validation {
-    condition     = contains(["dev", "prod", "test"], var.environment)
-    error_message = "Environment must be one of: dev, prod, test"
-  }
+  default     = "lambda_function.lambda_handler"
 }
 
-variable "owner" {
-  description = "The owner of the S3 bucket."
+variable "runtime" {
+  description = "Lambda runtime environment"
   type        = string
   validation {
-    condition     = length(var.owner) > 0
-    error_message = "Owner cannot be an empty string"
+    condition     = contains(["python3.8", "python3.9", "python3.10", "python3.11"], var.runtime)
+    error_message = "Runtime must be one of: python3.8, python3.9, python3.10, python3.11"
   }
+  default     = "python3.11"
+}
+
+variable "timeout" {
+  description = "Lambda function timeout in seconds"
+  type        = number
+  default     = 10
+}
+
+variable "memory_size" {
+  description = "Amount of memory in MB for Lambda function"
+  type        = number
+  default     = 128
+}
+
+variable "environment_variables" {
+  description = "Environment variables for the Lambda function"
+  type        = map(string)
+  default     = {}
 }
 
 variable "tags" {
-  description = "A map of tags to assign to the S3 bucket."
+  description = "Tags to apply to resources"
   type        = map(string)
   default     = {}
+}
+
+variable "log_retention_in_days" {
+  description = "CloudWatch log retention in days"
+  type        = number
+  default     = 7
+}
+
+# SIMPLE POLICY CONFIGURATION
+variable "policy_arns" {
+  description = "List of IAM policy ARNs to attach to the Lambda role"
+  type        = list(string)
+  default = [
+    "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+  ]
 }
