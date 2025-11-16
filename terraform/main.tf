@@ -1,16 +1,14 @@
-module "s3_buckets" {
-  providers = {
-    aws.main = aws.main
-  }
+module "lambda_function" {
+  source = "github.com/learning-ops-git/terraform-modules//module/s3?ref=lambda-mod"
 
-  source = "github.com/learning-ops-git/terraform-modules//module/s3?ref=s3-module"
-  for_each = local.bucket_defintions
-  country = var.country
-  domain = var.domain
-  account_id = local.account_id
-  environment = var.environment
-  suffix = each.value.suffix
-  owner = var.owner
-  tags = each.value.tags
-  s3_notifications = each.value.custom_bucket_properties.s3_notifications
+  function_name = var.function_name
+  filename      = var.filename
+  handler       = var.handler
+  runtime       = var.runtime
+  timeout       = var.timeout
+  memory_size   = var.memory_size
+  environment_variables = var.environment_variables
+  tags = var.tags
+  log_retention_in_days = var.log_retention_in_days
+  policy_arns  = var.policy_arns
 }

@@ -1,9 +1,9 @@
-name: Deploy S3 Storage with Terraform
+name: Deploy lambda with Terraform
 
 on:
   push:
     branches:
-      - s3-storage
+      - lambda
 
 jobs:
   deploy:
