@@ -1,2 +1,1 @@
-function_name = "simple_lambda"
-filename      = "../build/lambda.zip"
+function_name = "lambda-dev-function"
