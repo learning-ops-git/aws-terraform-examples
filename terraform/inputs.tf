@@ -3,11 +3,6 @@ variable "function_name" {
   type        = string
 }
 
-variable "filename" {
-  description = "Path to the deployment package (.zip file)"
-  type        = string
-}
-
 variable "handler" {
   description = "Function entrypoint in the code"
   type        = string
