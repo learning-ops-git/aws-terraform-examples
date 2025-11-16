@@ -2,7 +2,7 @@ module "lambda_function" {
   source = "github.com/learning-ops-git/terraform-modules//module/lambda-mod?ref=lambda-mod"
 
   function_name = var.function_name
-  filename      = locals.filename
+  filename      = local.filename
   handler       = var.handler
   runtime       = var.runtime
   timeout       = var.timeout
