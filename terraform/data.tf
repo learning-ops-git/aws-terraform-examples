@@ -4,5 +4,5 @@ data "aws_caller_identity" "current" {
 
 data "aws_lambda_function" "lambda_function" {
     provider      = aws.main
-    function_name = "simple_lambda"
+    function_name = "lambda-dev-function"
 }
