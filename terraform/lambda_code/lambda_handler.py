@@ -1,7 +1,7 @@
 import boto3
 from route_utils.utils import *
 
-SILVER_BUCKET = "co-data-engineering-216461881627-dev-silver"
+SILVER_BUCKET = "co-data-engineering-216461881627-dev-bronce"
 s3 = boto3.client("s3")
 
 def change_bucket(s3_route: S3Route) -> S3Route:
