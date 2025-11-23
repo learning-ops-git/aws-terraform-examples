@@ -1,7 +1,7 @@
 import json
 
 
-def lambda_handler(event, context):
+def main(event, context):
     """
     AWS Lambda handler that prints the incoming event and the Lambda context details.
     """

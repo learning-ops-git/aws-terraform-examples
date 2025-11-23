@@ -6,7 +6,7 @@ variable "function_name" {
 variable "handler" {
   description = "Function entrypoint in the code"
   type        = string
-  default     = "lambda_function.lambda_handler"
+  default     = "lambda_handler.main"
 }
 
 variable "runtime" {
