@@ -3,6 +3,8 @@ class S3Route:
     def __init__(self, bucket: str, key: str):
         self.bucket = bucket
         self.key = key
+        self.file_name = key.split("/")[-1].split(".")[0]
+        self.file_extension = key.split(".")[-1] if "." in key else ""
     
     def to_s3_path(self) -> str:
         return f"s3://{self.bucket}/{self.key}"

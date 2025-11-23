@@ -8,9 +8,8 @@ def change_bucket(s3_route: S3Route) -> S3Route:
     return S3Route(bucket=SILVER_BUCKET, key=s3_route.key)
 
 def change_key_prefix(s3_route: S3Route) -> S3Route:
-    old_key = s3_route.key
-    name, year, month, day = old_key.split("_", 5)
-    new_key = f"{name}/year={year}/month={month}/day={day}/{old_key}"
+    name, year, month, day = s3_route.file_name.split("_", 5)
+    new_key = f"{name}/year={year}/month={month}/day={day}/{s3_route.file_name}.{s3_route.file_extension}"
     return S3Route(bucket=s3_route.bucket, key=new_key)
 
 def main(event, context):
