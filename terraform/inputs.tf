@@ -54,6 +54,6 @@ variable "policy_arns" {
   description = "List of IAM policy ARNs to attach to the Lambda role"
   type        = list(string)
   default = [
-    "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+    "arn:aws:iam::216461881627:role/lambda_terraform"
   ]
 }
