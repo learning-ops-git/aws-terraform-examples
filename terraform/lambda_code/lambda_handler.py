@@ -17,7 +17,7 @@ def main(event, context):
     """
     AWS Lambda handler that prints the incoming event and the Lambda context details.
     """
-    
+    print("Received event:", event)
     src_route = EventParser.parse_s3_event(event)
     target_route = S3RouteMapper.map_src_to_dest(src_route, [change_bucket, change_key_prefix])
     
