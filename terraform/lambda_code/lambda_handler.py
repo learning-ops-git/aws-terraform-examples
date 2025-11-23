@@ -11,5 +11,6 @@ def main(event, context):
     except Exception:
         event_str = str(event)
 
-
+    print(f"event: {event_str}")
+    
     return {"status": "ok"}
